@@ -26,7 +26,7 @@ jobs:
                 path: dist
 
             - name: Send Email Notification
-              uses: dawidd6/action-send-mail@<REF>
+              uses: dawidd6/action-send-mail@v6
               env:
                HTTP_PROXY: http://proxy.example.test:3128
               with:
