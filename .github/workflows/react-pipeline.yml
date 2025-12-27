@@ -24,3 +24,19 @@ jobs:
               with: 
                 name: react-build
                 path: dist
+
+            - name: Send Email Notification
+              uses: dawidd6/action-send-mail@<REF>
+              env:
+               HTTP_PROXY: http://proxy.example.test:3128
+              with:
+
+                server_address: smtp.gmail.com
+                server_port: 465
+                username: ${{secrets.MAIL_USERNAME}}
+                password: ${{secrets.MAIL_PASSWORD}}
+                subject: React App Build Successfully
+                to: ${{secrets.RECEIVER_MAIL}}
+                from: ${{secrets.MAIL_USERNAME}}
+                body: "Build job of ${{github.repository}} for Branch: ${{github.ref_name}} completed successfully!"
+                
